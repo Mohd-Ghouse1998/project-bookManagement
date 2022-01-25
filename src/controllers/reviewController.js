@@ -90,7 +90,7 @@ const createReview= async function(req,res){
     const book = await bookModel.findOne({_id:bookId, isDeleted:false, detetedAt:null});
 
     if(!book) {
-        res.status(400).send({status: false, message: `book does not exit`})
+        res.status(404).send({status: false, message: `book does not exit`})
         return
     }
 
@@ -186,7 +186,7 @@ const updateReview= async function(req,res){
     const book = await bookModel.findOne({_id:bookId, isDeleted:false, detetedAt:null});
 
     if(!book) {
-        res.status(400).send({status: false, message: `book does not exit`})
+        res.status(404).send({status: false, message: `book does not exit`})
         return
     }
 
@@ -194,7 +194,7 @@ const updateReview= async function(req,res){
    
 
     if(!review1) {
-        res.status(400).send({status: false, message: `review does not exit`})
+        res.status(404).send({status: false, message: `review does not exit`})
         return
     }
 
@@ -259,14 +259,14 @@ const deleteReview= async function(req,res){
         const book = await bookModel.findOne({_id:bookId, isDeleted:false, detetedAt:null});
 
         if(!book) {
-            res.status(400).send({status: false, message: `book does not exit`})
+            res.status(404).send({status: false, message: `book does not exit`})
             return
         }
 
         const review = await reviewModel.findOne({_id:reviewId, bookId:bookId, isDeleted:false});
         
     if(!review) {
-        res.status(400).send({status: false, message: `review does not exit`})
+        res.status(404).send({status: false, message: `review does not exit`})
         return
     }
 

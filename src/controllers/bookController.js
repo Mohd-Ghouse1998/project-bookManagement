@@ -127,7 +127,7 @@ const createBook = async function (req, res) {
         const user = await userModel.findById(userId);
 
         if(!user) {
-            res.status(400).send({status: false, message: `user does not exit`})
+            res.status(404).send({status: false, message: `user does not exit`})
             return
         }
         // Validation ends
@@ -180,17 +180,17 @@ const getBooks=async function(req,res){
            
 
             let book = await bookModel.find(filterQuery)
-            const book1 = await bookModel.find(filterQuery).select({ "_id": 1, "title": 1, "excerpt": 1, "userId": 1 ,"category":1,"releasedAt":1,"reviews":1 })
+            const book1 = await bookModel.find(filterQuery).select({ "_id": 1, "title": 1, "excerpt": 1, "userId": 1 ,"category":1,"releasedAt":1,"reviews":1 }).sort({title:1})
             
-            function SortArray(x, y){
-                if (x.title < y.title) {return -1;}
-                if (x.title > y.title) {return 1;}
-                return 0;
-            }
-            var book2 = book1.sort(SortArray);
+            // function SortArray(x, y){
+            //     if (x.title < y.title) {return -1;}
+            //     if (x.title > y.title) {return 1;}
+            //     return 0;
+            // }
+            // var book2 = book1.sort(SortArray);
 	          
             if (book.length > 0) {
-              res.status(200).send({ status: true,message:'Books list', data: book2 })
+              res.status(200).send({ status: true,message:'Books list', data: book1 })
             }
             else {
               res.status(404).send({ msg: "book not find" })

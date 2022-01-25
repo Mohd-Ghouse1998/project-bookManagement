@@ -33,12 +33,12 @@ const isValidPassword = function (value) {
     
 }
 
-const trimObjValues= function(obj) {
-    return Object.keys(obj).reduce((acc, curr) => {
-      acc[curr] = obj[curr].trim()
-      return acc;
-    }, {});
-  }
+// const trimObjValues= function(obj) {
+//     return Object.keys(obj).reduce((acc, curr) => {
+//       acc[curr] = obj[curr].trim()
+//       return acc;
+//     }, {});
+//   }
   
   
   
@@ -107,7 +107,7 @@ const registerUser = async function (req, res) {
         }
 
          
-       trimObjValues(address)
+    //    trimObjValues(address)
         
        
         
