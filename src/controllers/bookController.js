@@ -262,7 +262,7 @@ const updateBook = async function (req, res) {
             return
         }
 
-      //  if (title) {
+       if (title) {
 
             if (!isValid(title)) {
                 res.status(400).send({ status: false, message: "Title should have some value" })
@@ -277,15 +277,15 @@ const updateBook = async function (req, res) {
                 return
             }
             updateData['title'] = title
-       // }
-        //if (excerpt) {
+       }
+        if (excerpt) {
             if (!isValid(excerpt)) {
                 res.status(400).send({ status: false, message: "excerpt should have some value" })
                 return
             }
             updateData['excerpt'] = excerpt
-       //}
-       // if (ISBN) {
+       }
+       if (ISBN) {
 
             if (!isValid(ISBN)) {
                 res.status(400).send({ status: false, message: "ISBN should have some value" })
@@ -300,15 +300,15 @@ const updateBook = async function (req, res) {
                 return
             }
             updateData['ISBN'] = ISBN 
-     //   }
-       // if (releasedAt) {
+       }
+       if (releasedAt) {
 
             if(!validateDate(releasedAt)){
                 res.status(400).send({status: false, message: 'releasedAt should be an date and format("YYYY-MM-DD")'})
                 return
             }
             updateData['releasedAt'] = releasedAt
-      //  }
+       }
 
         if (!isValidRequestBody(updateData)) {
             res.status(400).send({ status: false, message: "Please provide correct updating data " })
